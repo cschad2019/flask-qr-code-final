@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f4f4f4;
+            flex-direction: column;
+        }
+
+        .business-card {
+            width: 350px;
+            height: 200px;
+            background-color: #ffffff;
+            border: 2px solid #dddddd;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .info {
+            font-size: 14px;
+        }
+
+        .qr-code {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 80px;
+            height: 80px;
+        }
+
+        .qr-code img {
+            width: 100%;
+            height: auto;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-button {
+            width: 150px;
+            padding: 10px;
+            background: #6c757d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .action-button:hover {
+            background: #5a6268;
+        }
+
+        .edit-form-btn {
+            background: #007BFF;
+        }
+
+        .edit-form-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="business-card">
+        <div class="logo">{{ company_name }}</div>
+        <div class="info">
+            <p>{{ name }}</p>
+            <p>{{ position }}</p>
+            <p>{{ phone }}</p>
+            <p>{{ email }}</p>
+            <p>{{ website }}</p>
+        </div>
+        <div class="qr-code">
+            <img src="{{ qr_code_path }}" alt="QR Code">
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+        <a href="{{ back_url }}" class="action-button">Back Home</a>
+        <a href="{{ edit_url }}" class="action-button edit-form-btn">Edit Form</a>
+    </div>
+</body>
+</html>

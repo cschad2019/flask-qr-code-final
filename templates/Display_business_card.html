@@ -87,7 +87,7 @@
         .action-buttons {
             display: flex;
             gap: 10px;
-            margin-top: 10px;
+            margin-top: 20px;
         }
 
         .action-button {
@@ -128,7 +128,8 @@
     </style>
 </head>
 <body>
-    <div class="business-card">
+    <!-- Business Card -->
+    <div id="business-card" class="business-card">
         <div class="info">
             <div class="logo">{{ company_name }}</div>
             <p>{{ name }}</p>
@@ -148,7 +149,22 @@
     <div class="action-buttons">
         <a href="{{ back_url }}" class="action-button">Back Home</a>
         <a href="{{ edit_url }}" class="action-button edit-form-btn">Edit Form</a>
-        <a href="{{ download_url }}" class="action-button download-btn">Download Card</a>
+        <!-- Download Card Button -->
+        <button id="download-btn" class="action-button download-btn">Download Card</button>
     </div>
+
+    <script>
+        // Convert the business card to an image and download it
+        document.getElementById('download-btn').addEventListener('click', function () {
+            const cardElement = document.getElementById('business-card');
+            html2canvas(cardElement).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'business-card.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </body>
 </html>
